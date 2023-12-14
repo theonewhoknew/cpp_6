@@ -1,7 +1,9 @@
 #include "../inc/ScalarConverter.hpp"
 #include <sstream>
 #include <cstdlib>
+#include <string>
 #include <limits>
+#include <iomanip>
 
 void convert_char(std::string s)
 {	

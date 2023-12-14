@@ -1,4 +1,6 @@
 #include "../inc/ScalarConverter.hpp"
+#include <limits>
+#include <complex>
 
 int	main(int argc, char **argv)
 {

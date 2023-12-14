@@ -75,3 +75,11 @@ bool check_double(std::string s)
 	std::cout << "double literal found!" << std::endl;
 	return (true);	
 }
+
+bool check_literal(std::string s)
+{
+	if (!s.compare("-inff") || !s.compare("+inff") || !s.compare("nanf")
+		|| !s.compare("-inf") || !s.compare("+inf") || !s.compare("nan"))
+		return (true);
+	return (false);
+}

@@ -31,6 +31,8 @@ void ScalarConverter::convert(std::string s)
 		convert_float(s);
 	if (check_double(s))
 		convert_double(s);
+	if (check_literal(s))
+		convert_literal(s);
 	
 }
 

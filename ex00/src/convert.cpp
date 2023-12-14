@@ -110,6 +110,17 @@ void convert_double(std::string s)
 	std::cout << "double: " << d << std::endl;
 }
 
+void convert_literal(std::string s)
+{	
+	float f = strtof(s.c_str(), NULL);
+
+	std::cout << "char: impossible"<< std::endl;
+	std::cout << "int: impossible" << std::endl;
+	std::cout << "float: " << f << "f" << std::endl;
+	std::cout << "double: " << (double) f << std::endl;
+}
+
+
 void	print_overflow(void)
 {	
 	std::cout << "Overflow!" << std::endl;

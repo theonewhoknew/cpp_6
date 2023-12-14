@@ -27,6 +27,10 @@ void ScalarConverter::convert(std::string s)
 		convert_char(s);
 	if (check_int(s))
 		convert_int(s);
+	if (check_float(s))
+		convert_float(s);
+	if (check_double(s))
+		convert_double(s);
 	
 }
 

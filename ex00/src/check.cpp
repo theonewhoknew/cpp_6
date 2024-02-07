@@ -2,7 +2,7 @@
 
 bool check_char(std::string s)
 {
-	if (s.length() == 1 && isprint(s[0]) && isalpha(s[0]))
+	if (s.length() == 1 && isprint(s[0]))
 	{
 		std::cout << "char literal found!" << std::endl;
 		return (true);
@@ -26,6 +26,26 @@ bool check_int(std::string s)
 	return (true);
 }
 
+bool check_e(std::string s, int *i)
+{
+	if (s[*i] == 'e')
+	{
+		(*i)++;
+		if (s[*i] != '+')
+			return (false);
+		else
+		{
+			(*i)++;
+			for (int j = 0; j < 2; j++)
+			{
+				if (!isdigit(s[(*i)++]))
+					return (false);
+			}
+		}
+	}
+	return (true);
+}
+
 bool check_float(std::string s)
 {
 	int	i = 0;
@@ -44,6 +64,9 @@ bool check_float(std::string s)
 		return (false);
 	while (isdigit(s[i]))
 		i++;
+	if (!check_e(s, &i))
+		return (false);
+	std::cout << "llega aqui" << std::endl;
 	if (s[i] != 'f')
 		return (false);
 	std::cout << "float literal found!" << std::endl;
@@ -66,12 +89,10 @@ bool check_double(std::string s)
 	i++;
 	if (!isdigit(s[i]))
 		return (false);
-	while ((s[i]))
-	{
-		if (!isdigit(s[i]))
-			return (false);
+	while (isdigit(s[i]))
 		i++;
-	}
+	if (!check_e(s, &i))
+		return (false);
 	std::cout << "double literal found!" << std::endl;
 	return (true);	
 }

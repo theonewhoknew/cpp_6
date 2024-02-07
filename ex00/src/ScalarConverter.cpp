@@ -25,15 +25,16 @@ void ScalarConverter::convert(std::string s)
 {	
 	if (check_char(s))
 		convert_char(s);
-	if (check_int(s))
+	else if (check_int(s))
 		convert_int(s);
-	if (check_float(s))
+	else if (check_float(s))
 		convert_float(s);
-	if (check_double(s))
+	else if (check_double(s))
 		convert_double(s);
-	if (check_literal(s))
+	else if (check_literal(s))
 		convert_literal(s);
-	std::cout << "No proper data type was found" << std::endl;
+	else
+		std::cout << "No proper data type was found" << std::endl;
 	
 }
 

@@ -11,9 +11,9 @@ void convert_char(std::string s)
 
 	c = s.at(0);
 	std::cout << "char: " << c << std::endl;
-	std::cout << "int: " << (int) c << std::endl;
-	std::cout << "float: " << std::fixed << std::setprecision(1) << (float) c << "f" << std::endl;
-	std::cout << "double: " << (double) c << std::endl;
+	std::cout << "int: " << static_cast<int>(c) << std::endl;
+	std::cout << "float: " << static_cast<float>(c) << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(c) << std::endl;
 }
 
 static int stoi( std::string & s ) 
@@ -40,10 +40,10 @@ void convert_int(std::string s)
 	else if (i >= 0 && i <= 31)
 		std::cout << "char: Non displayable"<< std::endl;
 	else
-		std::cout << "char: '" << (char) i << "'" << std::endl;
+		std::cout << "char: '" << static_cast<char>(i) << "'" << std::endl;
 	std::cout << "int: " << i << std::endl;
-	std::cout << "float: " << std::fixed << std::setprecision(1) << (float) i << "f" << std::endl;
-	std::cout << "double: " << (double) i << std::endl;
+	std::cout << "float: " << static_cast<float>(i) << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(i) << std::endl;
 }
 
 void convert_float(std::string s)
@@ -73,10 +73,14 @@ void convert_float(std::string s)
 	else if ((int) f >= 0 && (int) f <= 31)
 		std::cout << "char: Non displayable"<< std::endl;
 	else
-		std::cout << "char: '" << (char) f << "'" << std::endl;
-	std::cout << "int: " << (int) f << std::endl;
-	std::cout << "float: " << std::fixed << std::setprecision(c) << f << "f" << std::endl;
-	std::cout << "double: " << (double) f << std::endl;
+		std::cout << "char: '" << static_cast<char>(f) << "'" << std::endl;
+	long ll = static_cast<long long>(f);
+	if (ll < std::numeric_limits<int>::min() || ll > std::numeric_limits<int>::max())
+		std::cout << "int: " << "impossible" << std::endl;
+	else
+		std::cout << "int: " << static_cast<int>(f) << std::endl;
+	std::cout << "float: " << f << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(f) << std::endl;
 }
 
 void convert_double(std::string s)
@@ -100,15 +104,20 @@ void convert_double(std::string s)
 		print_overflow();
 		return ;
 	}
-	d = std::strtod(s.c_str(), NULL);
-	if ((int) d > 127 || (int) d < -128)
+	d = static_cast<double>(ld);
+	if (static_cast<char>(d) > 127 || static_cast<char>(d) < -127)
 		std::cout << "char: impossible"<< std::endl;
 	else if ((int) d >= 0 && (int) d <= 31)
 		std::cout << "char: Non displayable"<< std::endl;
 	else
-		std::cout << "char: '" << (char) d << "'" << std::endl;
-	std::cout << "int: " << (int) d << std::endl;
-	std::cout << "float: " << std::fixed << std::setprecision(c) << (float) d << "f" << std::endl;
+		std::cout << "char: '" << static_cast<char>(d) << "'" << std::endl;
+	long ll = static_cast<long long>(d);
+	if (ll < std::numeric_limits<int>::min() || ll > std::numeric_limits<int>::max())
+		std::cout << "int: " << "impossible" << std::endl;
+	else
+		std::cout << "int: " << static_cast<int>(d) << std::endl;
+	std::cout << "int: " << static_cast<int>(d) << std::endl;
+	std::cout << "float: " << static_cast<float>(d) << "f" << std::endl;
 	std::cout << "double: " << d << std::endl;
 }
 
@@ -119,7 +128,7 @@ void convert_literal(std::string s)
 	std::cout << "char: impossible"<< std::endl;
 	std::cout << "int: impossible" << std::endl;
 	std::cout << "float: " << f << "f" << std::endl;
-	std::cout << "double: " << (double) f << std::endl;
+	std::cout << "double: " << static_cast<double>(f) << std::endl;
 }
 
 

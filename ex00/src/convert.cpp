@@ -110,16 +110,16 @@ void convert_double(std::string s)
 		return ;
 	}
 
-	long ll = static_cast<long long>(d);
+	int i = static_cast<int>(d);
 
-	if (ll < -std::numeric_limits<char>::max() || ll > std::numeric_limits<char>::max())
+	if (i < -std::numeric_limits<char>::max() || i > std::numeric_limits<char>::max())
 		std::cout << "char: impossible"<< std::endl;
-	else if (ll >= 0 && ll <= 31)
+	else if (i >= -127 && i <= 31)
 		std::cout << "char: Non displayable"<< std::endl;
 	else
 		std::cout << "char: '" << static_cast<char>(d) << "'" << std::endl;
 
-	if (ll < -std::numeric_limits<int>::max() || ll > std::numeric_limits<int>::max())
+	if (i < -std::numeric_limits<int>::max() || i > std::numeric_limits<int>::max())
 		std::cout << "int: " << "impossible" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(d) << std::endl;

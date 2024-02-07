@@ -5,15 +5,16 @@
 
 class ScalarConverter
 {
-public:
+
+private:
 	ScalarConverter();
 	ScalarConverter(ScalarConverter &copy);
 	ScalarConverter& operator=(const ScalarConverter &instance);
-	static void convert(std::string s);
 
-protected:
+public:
 	~ScalarConverter();
 
+	static void convert(std::string s);
 };
 
 bool 	check_char(std::string s);

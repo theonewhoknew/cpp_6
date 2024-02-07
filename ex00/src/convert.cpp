@@ -9,7 +9,7 @@ void convert_char(std::string s)
 {	
 	char 	c;
 
-	c = s[0];
+	c = s.at(0);
 	std::cout << "char: " << c << std::endl;
 	std::cout << "int: " << (int) c << std::endl;
 	std::cout << "float: " << std::fixed << std::setprecision(1) << (float) c << "f" << std::endl;

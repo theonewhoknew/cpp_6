@@ -57,15 +57,18 @@ bool check_float(std::string s)
 	i++;
 	while (isdigit(s[i]))
 		i++;
-	if (s[i] != '.')
-		return (false);
-	i++;
-	if (!isdigit(s[i]))
-		return (false);
-	while (isdigit(s[i]))
-		i++;
 	if (!check_e(s, &i))
-		return (false);
+	{
+		if (s[i] != '.')
+			return (false);
+		i++;
+		if (!isdigit(s[i]))
+			return (false);
+		while (isdigit(s[i]))
+			i++;
+		if (!isdigit(s[i]))
+			return (false);
+	}
 	if (s[i] != 'f')
 		return (false);
 	std::cout << "float literal found!" << std::endl;
@@ -83,15 +86,18 @@ bool check_double(std::string s)
 	i++;
 	while (isdigit(s[i]))
 		i++;
-	if (s[i] != '.')
-		return (false);
-	i++;
-	if (!isdigit(s[i]))
-		return (false);
-	while (isdigit(s[i]))
-		i++;
 	if (!check_e(s, &i))
-		return (false);
+	{
+		if (s[i] != '.')
+			return (false);
+		i++;
+		if (!isdigit(s[i]))
+			return (false);
+		while (isdigit(s[i]))
+			i++;
+		if (!isdigit(s[i]))
+			return (false);
+	}
 	std::cout << "double literal found!" << std::endl;
 	return (true);	
 }

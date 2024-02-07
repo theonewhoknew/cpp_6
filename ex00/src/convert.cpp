@@ -24,22 +24,19 @@ void convert_char(std::string s)
 }
 
 void convert_int(std::string s)
-{	
-	long long ll;
+{
 	int i;
 
-	ll = strtoll(s.c_str(), NULL, 0);
-	if (ll < std::numeric_limits<int>::min() || ll > std::numeric_limits<int>::max())
+	i = stoi(s);
+	if (i < -std::numeric_limits<int>::max() || i > std::numeric_limits<int>::max())
 	{
 		print_overflow();
 		return ;
 	}
 
-	i = stoi(s);
-
-	if (ll < std::numeric_limits<char>::min() || ll > std::numeric_limits<char>::max())
+	if (i < -std::numeric_limits<char>::max() || i > std::numeric_limits<char>::max())
 		std::cout << "char: impossible"<< std::endl;
-	else if (ll >= 0 && ll <= 31)
+	else if (i >= -127 && i <= 31)
 		std::cout << "char: Non displayable"<< std::endl;
 	else
 		std::cout << "char: '" << static_cast<char>(i) << "'" << std::endl;
@@ -66,7 +63,7 @@ void convert_float(std::string s)
 	long double ld;
 
 	ld = std::strtold(s.c_str(), NULL);
-	if (ld < std::numeric_limits<float>::min() || ld > std::numeric_limits<float>::max())
+	if (ld < -std::numeric_limits<float>::max() || ld > std::numeric_limits<float>::max())
 	{
 		print_overflow();
 		return ;
@@ -74,16 +71,16 @@ void convert_float(std::string s)
 
 	float f = atof(s.c_str());
 
-	long ll = static_cast<long long>(f);
+	int i = static_cast<int>(f);
 
-	if (ll < std::numeric_limits<char>::min() || ll > std::numeric_limits<char>::max())
+	if (i < -std::numeric_limits<char>::max() || i > std::numeric_limits<char>::max())
 		std::cout << "char: impossible"<< std::endl;
-	else if (ll >= 0 && ll <= 31)
+	else if (i >= -127 && i <= 31)
 		std::cout << "char: Non displayable"<< std::endl;
 	else
 		std::cout << "char: '" << static_cast<char>(f) << "'" << std::endl;
 
-	if (ll < std::numeric_limits<int>::min() || ll > std::numeric_limits<int>::max())
+	if (i < -std::numeric_limits<int>::max() || i > std::numeric_limits<int>::max())
 		std::cout << "int: " << "impossible" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(f) << std::endl;
@@ -103,29 +100,26 @@ void convert_float(std::string s)
 }
 
 void convert_double(std::string s)
-{	
-	long double ld;
+{
 	double d;
 
-	ld = std::strtold(s.c_str(), NULL);
-	if (ld < std::numeric_limits<double>::min() || ld > std::numeric_limits<double>::max())
+	d = atof(s.c_str());
+	if (d < -std::numeric_limits<double>::max() || d > std::numeric_limits<double>::max())
 	{
 		print_overflow();
 		return ;
 	}
 
-	d = atof(s.c_str());
-
 	long ll = static_cast<long long>(d);
 
-	if (ll < std::numeric_limits<char>::min() || ll > std::numeric_limits<char>::max())
+	if (ll < -std::numeric_limits<char>::max() || ll > std::numeric_limits<char>::max())
 		std::cout << "char: impossible"<< std::endl;
 	else if (ll >= 0 && ll <= 31)
 		std::cout << "char: Non displayable"<< std::endl;
 	else
 		std::cout << "char: '" << static_cast<char>(d) << "'" << std::endl;
 
-	if (ll < std::numeric_limits<int>::min() || ll > std::numeric_limits<int>::max())
+	if (ll < -std::numeric_limits<int>::max() || ll > std::numeric_limits<int>::max())
 		std::cout << "int: " << "impossible" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(d) << std::endl;

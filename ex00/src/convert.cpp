@@ -59,17 +59,14 @@ void convert_int(std::string s)
 }
 
 void convert_float(std::string s)
-{	
-	long double ld;
-
-	ld = std::strtold(s.c_str(), NULL);
-	if (ld < -std::numeric_limits<float>::max() || ld > std::numeric_limits<float>::max())
+{
+	
+	float f = atof(s.c_str());
+	if (f < -std::numeric_limits<float>::max() || f > std::numeric_limits<float>::max())
 	{
 		print_overflow();
 		return ;
 	}
-
-	float f = atof(s.c_str());
 
 	int i = static_cast<int>(f);
 
@@ -142,7 +139,7 @@ void convert_double(std::string s)
 
 void convert_literal(std::string s)
 {	
-	float f = strtof(s.c_str(), NULL);
+	float f = atof(s.c_str());
 
 	std::cout << "char: impossible"<< std::endl;
 	std::cout << "int: impossible" << std::endl;

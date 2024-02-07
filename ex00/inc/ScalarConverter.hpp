@@ -29,4 +29,8 @@ void	convert_double(std::string s);
 void	convert_literal(std::string s);
 void	print_overflow(void);
 
+bool 	check_int_dot(int i);
+bool	check_float_dot(float f);
+bool	check_double_dot(double d);
+
 #endif

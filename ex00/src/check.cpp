@@ -2,7 +2,7 @@
 
 bool check_char(std::string s)
 {
-	if (s.length() == 1 && isprint(s[0]))
+	if (s.length() == 1 && isprint(s[0]) && !isdigit(s[0]))
 	{
 		std::cout << "char literal found!" << std::endl;
 		return (true);
@@ -66,7 +66,6 @@ bool check_float(std::string s)
 		i++;
 	if (!check_e(s, &i))
 		return (false);
-	std::cout << "llega aqui" << std::endl;
 	if (s[i] != 'f')
 		return (false);
 	std::cout << "float literal found!" << std::endl;

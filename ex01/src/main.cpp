@@ -11,6 +11,7 @@ int main()
 
 	std::cout << a << std::endl;
 	uintptr_t raw = Serializer::serialize(a);
+	std::cout << raw << std::endl;
 	a = Serializer::deserialize(raw);
 	std::cout << a << std::endl;
 

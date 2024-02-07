@@ -6,16 +6,17 @@
 
 class Serializer
 {
-public:
+
+private:
 	Serializer();
 	Serializer(Serializer &copy);
 	Serializer& operator=(const Serializer &instance);
-	static uintptr_t serialize(Data* ptr);
-	static Data* deserialize(uintptr_t raw);
 
-protected:
+public:
 	~Serializer();
 
+	static uintptr_t serialize(Data* ptr);
+	static Data* deserialize(uintptr_t raw);
 };
 
 #endif

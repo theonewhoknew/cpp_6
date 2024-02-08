@@ -6,7 +6,7 @@
 struct Data
 {
 	int	number;
-	std::string *str;
+	std::string str;
 };
 
 #endif

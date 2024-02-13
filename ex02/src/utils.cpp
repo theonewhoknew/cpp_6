@@ -6,19 +6,17 @@
 #include <iostream>
 
 Base *generate(void)
-{	
-	Base *ptr;
+{
 	srand(time(NULL));
 	int rng = (int)(rand() % 3);
 	std::cout << rng << std::endl;
 
 	if (rng == 0)
-		ptr = new A;
+		return new A;
 	else if (rng == 1)
-		ptr = new B;
-	else if (rng == 2)
-		ptr = new C;
-	return (ptr);
+		return new B;
+	else
+		return new C;
 }
 
 void identify(Base* p)
@@ -47,20 +45,32 @@ void identify(Base* p)
 }
 
 void identify(Base &p)
-{	
-	if (dynamic_cast<const A*>(&p) != NULL)
+{
+	try
 	{
-		std::cout << "pointer is type of A" << std::endl;
-		return ;
+		(void) dynamic_cast<A&>(p);
+		std::cout << "Reference is type of A" << std::endl;
 	}
-	if (dynamic_cast<const B*>(&p) != NULL)
+	catch (const std::bad_cast &)
 	{
-		std::cout << "pointer is type of B" << std::endl;
-		return ;
-	}
-	if (dynamic_cast<const C*>(&p) != NULL)
-	{
-		std::cout << "pointer is type of C" << std::endl;
-		return ;
+		try
+		{
+			(void) dynamic_cast<B&>(p);
+			std::cout << "Reference is type of B" << std::endl;
+		}
+		catch(const std::bad_cast&)
+		{
+			try
+			{
+				(void) dynamic_cast<C&>(p);
+				std::cout << "Reference is type of C" << std::endl;
+			}
+			catch(const std::bad_cast&)
+			{
+				std::cout << "Reference is of unknown type" << std::endl;
+			}
+			
+		}
+		
 	}
 }
